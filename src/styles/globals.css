@@ -28,6 +28,18 @@
   .btn-light {
     @apply bg-light text-primary hover:bg-dark hover:text-white;
   }
+
+  .nav-link {
+    @apply relative text-dark hover:text-primary transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
 }
 
 @layer utilities {

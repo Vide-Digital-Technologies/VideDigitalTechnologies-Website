@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout'
 import AppRoutes from './routes'
 import { useScrollPosition } from './hooks/useScrollPosition'
 import BackToTop from './components/common/BackToTop'
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
   const scrollPosition = useScrollPosition()
@@ -10,7 +11,9 @@ function App() {
   return (
     <Router>
       <Layout>
-        <AppRoutes />
+        <AnimatePresence mode="wait">
+          <AppRoutes />
+        </AnimatePresence>
         {scrollPosition > 300 && <BackToTop />}
       </Layout>
     </Router>
