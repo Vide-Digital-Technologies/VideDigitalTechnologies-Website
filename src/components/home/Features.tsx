@@ -1,4 +1,4 @@
-import { FaLightbulb, FaUsers } from 'react-icons/fa'
+import { FaLightbulb, FaUsers, FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { useState } from 'react'
 import Section from '../common/Section'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -121,6 +121,14 @@ const Features = () => {
     (currentPage + 1) * itemsPerPage
   )
 
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages)
+  }
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)
+  }
+
   return (
     <Section className="bg-light relative py-20">
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -148,32 +156,53 @@ const Features = () => {
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {visibleFeatures.map((feature, index) => (
-            <motion.div
-              key={`${currentCategory}-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-lg group hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                  <feature.icon className="text-3xl text-primary group-hover:text-white transition-colors duration-300" />
+      <div className="relative max-w-7xl mx-auto">
+        <AnimatePresence mode="wait">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visibleFeatures.map((feature, index) => (
+              <motion.div
+                key={`${currentCategory}-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="bg-white p-8 rounded-lg group hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                    <feature.icon className="text-3xl text-primary group-hover:text-white transition-colors duration-300" />
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-bold text-dark mb-4 group-hover:text-primary transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-body">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </AnimatePresence>
+                <h3 className="text-xl font-bold text-dark mb-4 group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-body">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </AnimatePresence>
+
+        {totalPages > 1 && (
+          <>
+            <button
+              onClick={prevPage}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all z-20 shadow-xl border border-gray-100"
+              aria-label="Previous page"
+            >
+              <FaArrowLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={nextPage}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all z-20 shadow-xl border border-gray-100"
+              aria-label="Next page"
+            >
+              <FaArrowRight className="w-5 h-5" />
+            </button>
+          </>
+        )}
+      </div>
 
       {totalPages > 1 && (
         <div className="flex justify-center mt-12 space-x-2">
