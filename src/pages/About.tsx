@@ -1,7 +1,6 @@
 import PageLayout from '../components/common/PageLayout'
 import PageHeader from '../components/common/PageHeader'
 import AboutSection from '../components/sections/AboutSection'
-import TeamSection from '../components/sections/TeamSection'
 
 const About = () => {
   const breadcrumbs = [
@@ -16,7 +15,6 @@ const About = () => {
         breadcrumbs={breadcrumbs}
       />
       <AboutSection />
-      <TeamSection />
     </PageLayout>
   )
 }
