@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaPhone, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaArrowUp } from 'react-icons/fa'
+import { FaPhone, FaEnvelope, FaTwitter, FaInstagram, FaLinkedinIn, FaArrowUp, FaWhatsapp } from 'react-icons/fa'
 import logo from '../../assets/logo.png'
 
 const Footer = () => {
@@ -30,10 +30,10 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { icon: FaFacebookF, href: '#', label: 'Facebook' },
-    { icon: FaTwitter, href: '#', label: 'Twitter' },
-    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
-    { icon: FaInstagram, href: '#', label: 'Instagram' }
+    { icon: FaInstagram, href: 'https://www.instagram.com/vide.digital.technologies/', label: 'Instagram' },
+    { icon: FaTwitter, href: 'https://x.com/videdigitech', label: 'Twitter' },
+    { icon: FaWhatsapp, href: 'http://wa.me/918660735813', label: 'WhatsApp' },
+    { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/vide-digital-technologies/', label: 'LinkedIn' }
   ]
 
   return (

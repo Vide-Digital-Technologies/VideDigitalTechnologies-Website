@@ -1,7 +1,7 @@
 import PageLayout from '../components/common/PageLayout'
 import ContactForm from '../components/contact/ContactForm'
 import ContactInfo from '../components/contact/ContactInfo'
-import { FaHeadset, FaEnvelope } from 'react-icons/fa'
+import { FaHeadset, FaEnvelope, FaTwitter, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
 const Contact = () => {
@@ -20,6 +20,13 @@ const Contact = () => {
       info: "videdigitaltechnologies@gmail.com",
       link: "mailto:videdigitaltechnologies@gmail.com"
     }
+  ]
+
+  const socialLinks = [
+    { icon: FaTwitter, href: 'https://x.com/videdigitech', label: 'Twitter' },
+    { icon: FaWhatsapp, href: 'http://wa.me/918660735813', label: 'WhatsApp' },
+    { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/vide-digital-technologies/', label: 'LinkedIn' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/vide.digital.technologies/', label: 'Instagram' }
   ]
 
   return (
@@ -74,6 +81,27 @@ const Contact = () => {
             <ContactForm />
           </div>
           <ContactInfo />
+        </div>
+      </div>
+
+      {/* Social Links Section */}
+      <div className="bg-gray-100 py-8">
+        <div className="container mx-auto px-4 mb-20">
+          <h2 className="text-2xl font-bold mb-4 text-center">Follow Us</h2>
+          <div className="flex justify-center space-x-4">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-gray-600 hover:text-primary transition-colors"
+                aria-label={social.label}
+              >
+                <social.icon />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </PageLayout>

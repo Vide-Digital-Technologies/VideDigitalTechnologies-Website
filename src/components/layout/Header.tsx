@@ -30,7 +30,7 @@ const Header = () => {
       className={`fixed left-0 w-full z-40 transition-all duration-500 ${
         isScrolled 
           ? 'top-0 bg-white/95 backdrop-blur-md shadow-lg py-0.5'
-          : `${window.innerWidth >= 768 ? 'top-[32px]' : 'top-0'} bg-black/20 backdrop-blur-sm py-0.5`
+          : 'top-0 bg-black/20 backdrop-blur-sm py-0.5'
       }`}
     >
       {/* Progress bar */}
@@ -163,15 +163,15 @@ const Header = () => {
                 {/* Social Links */}
                 <div className="flex items-center space-x-4 mt-6">
                   {[
-                    { icon: FaFacebookF, href: '#' },
-                    { icon: FaTwitter, href: '#' },
-                    { icon: FaLinkedinIn, href: '#' },
-                    { icon: FaInstagram, href: '#' }
+                    { icon: FaFacebookF, href: 'https://www.linkedin.com/company/vide-digital-technologies/', label: 'LinkedIn' },
+                    { icon: FaTwitter, href: 'https://x.com/videdigitech', label: 'Twitter' },
+                    { icon: FaLinkedinIn, href: 'http://wa.me/918660735813', label: 'WhatsApp' },
+                    { icon: FaInstagram, href: 'https://www.instagram.com/vide.digital.technologies/', label: 'Instagram' }
                   ].map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all duration-300"
+                      className="w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all duration-300"
                     >
                       <social.icon size={14} />
                     </a>
